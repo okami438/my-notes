@@ -1,24 +1,16 @@
 <template>
-  <div class="home">
-    <HelloWorld/>
-    <main class="main">
-      <section class="main__left-side">
-        <h1 :style="{color: 'var(--white)'}">Мои заметки</h1>
-        <h3 :style="{color: 'var(--gray)'}">Не забывай о важном, храни его в облаке.</h3>
-      </section>
-    </main>
-  </div>
+  <main class="main">
+    <section class="main__left-side">
+      <h1 :style="{color: 'var(--white)'}">Мои заметки</h1>
+      <h3 :style="{color: 'var(--gray)'}">Не забывай о важном, храни его в облаке.</h3>
+    </section>
+  </main>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/header.vue'
 
 export default {
   name: 'HomeView',
-  components: {
-    HelloWorld
-  }
 }
 </script>
 
@@ -38,6 +30,8 @@ export default {
   &__left-side {
     display: flex;
     height: 392px;
+    max-width: 642px;
+    width: auto;
     padding: var(--0, 0px);
     flex-direction: column;
     align-items: flex-start;

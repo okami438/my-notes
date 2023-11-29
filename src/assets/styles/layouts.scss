@@ -15,7 +15,7 @@ body {
   font-family: Montserrat;
 }
 
-input {
+%input-shared {
   display: flex;
   height: 72px;
   padding: var(--0, 0px) var(--16, 16px);
@@ -26,34 +26,21 @@ input {
   background: var(--white);
 }
 
-input:hover {
+%button-round-shared {
   display: flex;
-  height: 72px;
-  padding: var(--0, 0px) var(--16, 16px);
+  width: var(--56, 56px);
+  height: var(--56, 56px);
+  padding: var(--0, 0px) var(--24, 24px);
+  justify-content: center;
   align-items: center;
-  gap: var(--0, 0px);
-  align-self: stretch;
-  border-radius: 36px;
-  border: 2px solid var(--green-light);
-  background: var(--white);
+  gap: var(--12, 12px);
+  flex-shrink: 0;
+  border-radius: 32px;
 }
 
-input:active {
-  display: flex;
-  height: 72px;
-  padding: var(--0, 0px) var(--16, 16px);
-  align-items: center;
-  gap: var(--0, 0px);
-  align-self: stretch;
-  border-radius: 36px;
-  border: 2px solid var(--green-light);
-  background: var(--white);
-}
-
-textarea {
+%textarea-shared {
   resize: none;
   display: flex;
-  width: 678px;
   height: 280px;
   padding: var(--16, 16px);
   align-items: flex-start;
@@ -62,35 +49,6 @@ textarea {
   align-self: stretch;
   border-radius: 36px;
   background: var(--white, #FFF);
-}
-
-textarea:hover {
-  resize: none;
-  display: flex;
-  height: 280px;
-  width: 678px;
-  padding: var(--16, 16px);
-  align-items: flex-start;
-  gap: var(--0, 0px);
-  align-self: stretch;
-  border-radius: 36px;
-  border: 2px solid var(--green-light, #B1C909);
-  background: var(--white, #FFF);
-}
-
-textarea:active {
-  resize: none;
-  display: flex;
-  height: 280px;
-  width: 678px;
-  padding: var(--16, 16px);
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--0, 0px);
-  align-self: stretch;
-  border-radius: 36px;
-  border: 2px solid var(--green-light);
-  background: var(--white);
 }
 
 %button-enter-shared {
@@ -104,74 +62,72 @@ textarea:active {
   flex-shrink: 0;
 }
 
+input {
+  @extend %input-shared;
+
+  &:hover {
+    @extend %input-shared;
+    border: 2px solid var(--green-light);
+  }
+
+  &:active {
+    @extend %input-shared;
+    border: 2px solid var(--green-light);
+  }
+}
+
+
+textarea {
+  @extend %textarea-shared;
+
+  &:hover {
+    @extend %textarea-shared;
+    border: 2px solid var(--green-light, #B1C909);
+  }
+
+  &:active {
+    @extend %textarea-shared;
+    border: 2px solid var(--green-light);
+  }
+}
+
+
 .button-enter{
   @extend %button-enter-shared;
   background: var(--green-light);
-}
 
-.button-enter:disabled {
-  @extend %button-enter-shared;
-  background: var(--gray);
-}
+  &:disabled {
+    @extend %button-enter-shared;
+    background: var(--gray);
+  }
 
-.button-enter:hover {
-  @extend %button-enter-shared;
-  background: var(--green-middle);
-}
+  &:hover {
+    @extend %button-enter-shared;
+    background: var(--green-middle);
+  }
 
-.button-enter:active {
-  @extend %button-enter-shared;
-  background: var(--green-dark);
+  &:active {
+    @extend %button-enter-shared;
+    background: var(--green-dark);
+  }
 }
 
 .button-round {
-  display: flex;
-  width: var(--56, 56px);
-  height: var(--56, 56px);
-  padding: var(--0, 0px) var(--24, 24px);
-  justify-content: center;
-  align-items: center;
-  gap: var(--12, 12px);
-  flex-shrink: 0;
-  border-radius: 32px;
-  background: var(--green-light)
-}
+  @extend %button-round-shared;
+  background: var(--green-light);
 
-.button-round:disabled {
-  display: flex;
-  width: var(--56, 56px);
-  height: var(--56, 56px);
-  padding: var(--0, 0px) var(--24, 24px);
-  justify-content: center;
-  align-items: center;
-  gap: var(--12, 12px);
-  flex-shrink: 0;
-  border-radius: 32px;
-  background: var(--gray);
-}
+  &:disabled {
+    @extend %button-round-shared;
+    background: var(--gray);
+  }
 
-.button-round:hover {
-  display: flex;
-  width: var(--56, 56px);
-  height: var(--56, 56px);
-  padding: var(--0, 0px) var(--24, 24px);
-  justify-content: center;
-  align-items: center;
-  gap: var(--12, 12px);
-  flex-shrink: 0;
-  border-radius: 32px;
-  background: var(--green-middle);
-}
+  &:hover {
+    @extend %button-round-shared;
+    background: var(--green-middle);
+  }
 
-.button-round:active {
-  display: flex;
-  width: var(--56, 56px);
-  height: var(--56, 56px);
-  padding: var(--0, 0px) var(--24, 24px);
-  justify-content: center;
-  align-items: center;
-  gap: var(--12, 12px);
-  flex-shrink: 0;
-  border-radius: 32px;
-  background: var(--green-dark);
+  &:active {
+    @extend %button-round-shared;
+    background: var(--green-dark);
+  }
 }
