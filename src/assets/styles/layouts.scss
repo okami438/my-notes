@@ -1,3 +1,5 @@
+@import '../styles/typography.scss';
+
 :root {
   --dark: #0A1F38;
   --dark-middle: #1B2F46;
@@ -10,33 +12,45 @@
   --white: #FFFFFF;
 }
 
+#app {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 body {
   background: var(--dark);
   font-family: Montserrat;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+button, input {
+  border: none;
+}
+
+input::placeholder {
+  @extend %text-small;
+  padding: 1rem;
+  overflow: hidden;
+  color: var(--gray);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 18px;
 }
 
 %input-shared {
   display: flex;
   height: 72px;
-  padding: var(--0, 0px) var(--16, 16px);
   align-items: center;
-  gap: var(--0, 0px);
   align-self: stretch;
   border-radius: 36px;
   background: var(--white);
 }
 
-%button-round-shared {
-  display: flex;
-  width: var(--56, 56px);
-  height: var(--56, 56px);
-  padding: var(--0, 0px) var(--24, 24px);
-  justify-content: center;
-  align-items: center;
-  gap: var(--12, 12px);
-  flex-shrink: 0;
-  border-radius: 32px;
-}
+
 
 %textarea-shared {
   resize: none;
@@ -51,16 +65,7 @@ body {
   background: var(--white, #FFF);
 }
 
-%button-enter-shared {
-  display: inline-flex;
-  width: 144px;
-  height: var(--56, 56px);
-  padding: var(--0, 0px) var(--24, 24px);
-  border-radius: 32px;
-  align-items: center;
-  gap: var(--12, 12px);
-  flex-shrink: 0;
-}
+
 
 input {
   @extend %input-shared;
@@ -92,42 +97,4 @@ textarea {
 }
 
 
-.button-enter{
-  @extend %button-enter-shared;
-  background: var(--green-light);
 
-  &:disabled {
-    @extend %button-enter-shared;
-    background: var(--gray);
-  }
-
-  &:hover {
-    @extend %button-enter-shared;
-    background: var(--green-middle);
-  }
-
-  &:active {
-    @extend %button-enter-shared;
-    background: var(--green-dark);
-  }
-}
-
-.button-round {
-  @extend %button-round-shared;
-  background: var(--green-light);
-
-  &:disabled {
-    @extend %button-round-shared;
-    background: var(--gray);
-  }
-
-  &:hover {
-    @extend %button-round-shared;
-    background: var(--green-middle);
-  }
-
-  &:active {
-    @extend %button-round-shared;
-    background: var(--green-dark);
-  }
-}

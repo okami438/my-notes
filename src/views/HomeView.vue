@@ -1,8 +1,12 @@
 <template>
   <main class="main">
-    <section class="main__left-side">
-      <h1 :style="{color: 'var(--white)'}">Мои заметки</h1>
-      <h3 :style="{color: 'var(--gray)'}">Не забывай о важном, храни его в облаке.</h3>
+    <article class="main__left-side">
+      <h1 :style="{color: 'var(--white)', fontWeight: 'bold'}">Мои заметки</h1>
+      <h3 :style="{color: 'var(--gray)', maxWidth: '394px'}">Не забывай о важном, храни его в облаке.</h3>
+    </article>
+    <section class="main__right-side">
+      <img src="/src/assets/images/Exp.svg" alt="SVG" class="main__right-side-exp-image-overlapping">
+      <img src="/src/assets/images/OBJECTS.svg" alt="SVG" class="main__right-side-objects-image-overlapping">
     </section>
   </main>
 </template>
@@ -18,25 +22,40 @@ export default {
 <style scoped lang="scss">
 
 .main {
+  box-sizing: border-box;
   display: flex;
-  padding: var(--0, 0px) var(--80, 80px);
-  border-radius: var(--0, 0px);
+  padding: var(--0, 0px) var(--160, 160px);
   justify-content: space-between;
   align-items: center;
-  flex: 1 0 0;
+  flex: 1;
   align-self: stretch;
-
+  flex-wrap: wrap;
 
   &__left-side {
     display: flex;
-    height: 392px;
-    max-width: 642px;
-    width: auto;
-    padding: var(--0, 0px);
     flex-direction: column;
+    gap: var(--40px, 40px);
+    padding: var(--0, 0px);
     align-items: flex-start;
-    gap: var(--40, 40px);
-    flex: 1 0 0;
+    width: auto;
+    max-width: 33%;
+    flex-shrink: 0;
+  }
+
+  &__right-side {
+    position: relative;
+
+    &-exp-image-overlapping {
+      width: 40vw;
+    }
+
+    &-objects-image-overlapping {
+      position: absolute;
+      width: 30vw;
+      top: 18%;
+      left: 12%;
+
+    }
   }
 }
 
