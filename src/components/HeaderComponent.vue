@@ -1,18 +1,18 @@
 <template>
   <header>
-    <img src="/src/assets/images/logo.svg" alt="SVG">
+    <img src="/src/assets/images/MyNotes.svg" alt="SVG">
     <ButtonsComponent @click="showDialogComponent = !showDialogComponent" label="Вход">
       <template #icon>
         <img src="/src/assets/images/Vector.svg" alt="SVG">
       </template>
     </ButtonsComponent>
-    <dialog-component v-if="showDialogComponent"/>
+    <dialog-component v-if="showDialogComponent" @close="showDialogComponent = false"/>
   </header>
 </template>
 
 <script>
 import DialogComponent from "@/components/DialogComponent.vue";
-import ButtonsComponent from "@/components/ButtonsComponent.vue";
+import ButtonsComponent from "@/components/ButtonComponent.vue";
 
 export default {
   name: 'HeaderComponent',

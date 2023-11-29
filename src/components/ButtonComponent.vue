@@ -1,6 +1,6 @@
 <template>
     <button @click="$emit('click')" :class="{'button-round': rounded, 'button-enter': !rounded}">
-      <img v-if="isCloseButton" src="/src/assets/images/Vector%20(1).svg" alt="Vector">
+      <img v-if="isCloseButton" src="/src/assets/images/Close.svg" alt="Vector">
       <slot name="icon"/>
       <span class="text-normal" :style="{color: 'var(--white)'}" v-if="label">{{ label }}</span>
     </button>

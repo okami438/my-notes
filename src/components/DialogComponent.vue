@@ -2,14 +2,13 @@
   <div class="dialog-mask">
     <div class="container">
       <header class="container__header">
-        <ButtonsComponent rounded is-close-button/>
+        <ButtonsComponent rounded is-close-button @click="$emit('close')"/>
       </header>
       <section class="container__section-ui">
         <h2>Вход в ваш аккаунт</h2>
-        <div v-for="item in this.form" :key="item.id">
-          <label class="container__section-ui-label text-small" :for="item.id"> {{ item.label }} </label>
-          <input class="container__section-ui-input" type="text" :id="item.id" :value="item.value"
-                 :placeholder="item.placeholder">
+        <div v-for="item in form" :key="item.id">
+          <InputComponent v-if="item.type === 'text'" :item="item"/>
+          <PasswordComponent v-if="item.type === 'password'" :item="item"/>
         </div>
         <div class="container__section-ui-signup">
           <span class="container__section-ui-signup-text text-small">У вас нет аккаунта? <span class="text-small-bold">Зарегистрируйтесь</span></span>
@@ -22,18 +21,23 @@
 </template>
 
 <script>
-import ButtonsComponent from "@/components/ButtonsComponent.vue";
+import ButtonsComponent from "@/components/ButtonComponent.vue";
+import InputComponent from "@/components/InputComponent.vue";
+import PasswordComponent from "@/components/PasswordComponent.vue";
 
 export default {
   name: "DialogComponent",
+  emits: ['close'],
   components: {
-    ButtonsComponent
+    PasswordComponent,
+    ButtonsComponent,
+    InputComponent
   },
   data() {
     return {
       form: [
-        {id: 'name', placeholder: 'Введите значение', label: 'Email', value: ''},
-        {id: 'password', placeholder: 'Введите пароль', label: 'Пароль', value: ''}
+        {id: 'name', placeholder: 'Введите значение', label: 'Email', type: 'text', value: ''},
+        {id: 'password', placeholder: 'Введите пароль', label: 'Пароль', type: 'password', value: ''}
       ]
     }
   }
@@ -101,16 +105,16 @@ export default {
       position: relative;
     }
 
-    &-label {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--gray);
-      padding-left: 1rem;
-    }
-
-    &-input {
-      width: 100%;
-    }
+    //&-label {
+    //  display: block;
+    //  margin-bottom: 8px;
+    //  color: var(--gray);
+    //  padding-left: 1rem;
+    //}
+    //
+    //&-input {
+    //  width: 100%;
+    //}
 
     &-signup {
       display: flex;
