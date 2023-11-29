@@ -8,12 +8,13 @@
         <h2>Вход в ваш аккаунт</h2>
         <div v-for="item in form" :key="item.id">
           <InputComponent v-if="item.type === 'text'" :item="item"/>
-          <PasswordComponent v-if="item.type === 'password'" :item="item"/>
+          <InputPasswordComponent v-if="item.type === 'password'" :item="item"/>
         </div>
         <div class="container__section-ui-signup">
           <span class="container__section-ui-signup-text text-small">У вас нет аккаунта? <span class="text-small-bold">Зарегистрируйтесь</span></span>
-          <ButtonsComponent label="Войти"/>
+          <ButtonsComponent label="Войти" @click="fetchAuth"/>
         </div>
+          <span v-if="isError" class="container__section-ui-error">Пользователь с таким логином не найден</span>
       </section>
     </div>
   </div>
@@ -22,24 +23,46 @@
 
 <script>
 import ButtonsComponent from "@/components/ButtonComponent.vue";
-import InputComponent from "@/components/InputComponent.vue";
-import PasswordComponent from "@/components/PasswordComponent.vue";
+import InputComponent from "@/components/InputTextComponent.vue";
+import InputPasswordComponent from "@/components/InputPasswordComponent.vue";
+import {authentication} from "@/api";
 
 export default {
   name: "DialogComponent",
   emits: ['close'],
   components: {
-    PasswordComponent,
+    InputPasswordComponent,
     ButtonsComponent,
     InputComponent
   },
   data() {
     return {
+      isError: null,
       form: [
-        {id: 'name', placeholder: 'Введите значение', label: 'Email', type: 'text', value: ''},
+        {id: 'email', placeholder: 'Введите значение', label: 'Email', type: 'text', value: ''},
         {id: 'password', placeholder: 'Введите пароль', label: 'Пароль', type: 'password', value: ''}
       ]
     }
+  },
+
+  methods: {
+
+    async fetchAuth() {
+
+      try {
+        const requestMapper = {};
+        this.form.forEach(item => {
+          requestMapper[item.id] = item.value;
+        });
+        await authentication.getAuthenticationUser(requestMapper);
+        this.isError = null;
+      } catch(e) {
+        console.log(e)
+        this.isError = e;
+      }
+
+    }
+
   }
 }
 </script>
@@ -105,16 +128,6 @@ export default {
       position: relative;
     }
 
-    //&-label {
-    //  display: block;
-    //  margin-bottom: 8px;
-    //  color: var(--gray);
-    //  padding-left: 1rem;
-    //}
-    //
-    //&-input {
-    //  width: 100%;
-    //}
 
     &-signup {
       display: flex;
@@ -130,6 +143,13 @@ export default {
       & > span {
         color: var(--green);
       }
+    }
+
+    &-error {
+      padding: 1rem 1rem 1rem 1.5rem;
+      color: #ff7461;
+      background-color: #323649;
+      border-radius: 2rem;
     }
   }
 }

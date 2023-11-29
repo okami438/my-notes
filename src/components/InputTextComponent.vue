@@ -2,10 +2,15 @@
 <div class="input-text-form">
   <label class="input-text-form__label text-small" :for="item.id"> {{ item.label }} </label>
   <div class="input-text-form__container">
-    <input class="input-text-form__input" :type="item.type" :id="item.id" :value="item.value"
-           :placeholder="item.placeholder">
+    <input
+        class="input-text-form__container-input"
+        :type="item.type"
+        :id="item.id"
+        :value="item.value"
+        v-model="item.value"
+        :placeholder="item.placeholder"
+    >
   </div>
-
 </div>
 </template>
 
@@ -36,12 +41,20 @@ export default {
     @extend %input-shared;
     display: flex;
     padding: 0 1.5rem;
-  }
 
-  &__input {
-    @extend %text-normal;
-    width: 100%;
-    height: auto;
+    &:hover {
+      border: 2px solid var(--green-light);
+    }
+
+    &:active {
+      border: 2px solid var(--green-light);
+    }
+
+    &-input {
+      @extend %text-normal;
+      width: 100%;
+      height: auto;
+    }
   }
 
 }

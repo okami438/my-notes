@@ -12,8 +12,13 @@
   --white: #FFFFFF;
 }
 
-#app {
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -22,9 +27,6 @@
 body {
   background: var(--dark);
   font-family: Montserrat;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 button, input {
@@ -70,20 +72,6 @@ input::placeholder {
 }
 
 
-
-//input[type="text"] {
-//  @extend %input-shared;
-//
-//  &:hover {
-//    @extend %input-shared;
-//    border: 2px solid var(--green-light);
-//  }
-//
-//  &:active {
-//    @extend %input-shared;
-//    border: 2px solid var(--green-light);
-//  }
-//}
 
 
 textarea {
