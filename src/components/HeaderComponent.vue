@@ -1,13 +1,11 @@
 <template>
   <header>
     <img src="/src/assets/images/MyNotes.svg" alt="SVG">
-    <ButtonComponent @click="showSignInView = !showSignInView" label="Вход">
+    <ButtonComponent @click="toLogin" label="Вход">
       <template #icon>
         <img src="/src/assets/images/Vector.svg" alt="SVG">
       </template>
     </ButtonComponent>
-    <SignInView v-if="showSignInView" @close="showSignInView = false" @registration="closeDialogFn('registration')"/>
-    <SignUpView v-if="showSignUpView" @close="showSignUpView = false" @enter="closeDialogFn('enter')"/>
   </header>
 </template>
 
@@ -20,17 +18,11 @@ import SignInView from "@/views/SignInView.vue"
 export default {
   name: 'HeaderComponent',
   components: {SignUpView, SignInView, ButtonComponent, DialogComponent},
-  data() {
-    return {
-      showSignUpView: false,
-      showSignInView: false,
-    }
-  },
+
 
   methods: {
-    closeDialogFn(type) {
-      this.showSignInView = type === 'enter';
-      this.showSignUpView = type === 'registration';
+    toLogin() {
+      this.$router.replace("/login");
     }
   }
 }

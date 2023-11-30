@@ -1,7 +1,7 @@
 <template>
-  <dialog-component @close="$emit('close')">
+  <dialog-component @close="onClose">
     <template #content>
-      <SignUpComponent @enter="$emit('enter')"/>
+      <SignUpComponent/>
     </template>
   </dialog-component>
 </template>
@@ -13,7 +13,12 @@ import SignUpComponent from "@/components/dialog/type/SingUpComponent.vue";
 export default {
   name: "SignUpView",
   components: {SignUpComponent, DialogComponent},
-  emits: ['close', 'enter'],
+
+  methods: {
+    onClose() {
+      this.$router.replace("/");
+    }
+  }
 }
 </script>
 

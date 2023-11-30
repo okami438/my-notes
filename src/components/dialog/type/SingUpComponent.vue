@@ -3,7 +3,9 @@
     <h2>Регистрация</h2>
     <FormRenderComponent :form="form"/>
     <div class="container__section-ui-signup">
-      <span class="container__section-ui-signup-text text-small">У вас есть аккаунт? <span class="text-small-bold" @click="$emit('enter')">Войдите</span></span>
+      <span class="container__section-ui-signup-text text-small">У вас есть аккаунт?
+        <router-link class="text-small container__section-ui-signup-link" to="/login">Войдите</router-link>
+      </span>
       <ButtonComponent :style="{width: '13.75rem'}" label="Зарегистрироваться" @click="fetchReg"/>
     </div>
   </section>
@@ -19,7 +21,6 @@ import {DIALOG_SIGN_UP} from "@/constans/dialogSignUp";
 export default {
   name: "SignUpComponent",
   components: {ButtonComponent, FormRenderComponent},
-  emits: ['enter'],
   data() {
     return {
       form: []
@@ -28,14 +29,13 @@ export default {
 
   created() {
     this.form = DIALOG_SIGN_UP
-    console.log(this.form)
   },
 
   methods: {
 
     async fetchReg() {
       try {
-        await registration.registrationNewUser(requestMapper(this.form));
+        await registration.postRegistration(requestMapper(this.form));
       } catch(e) {
         console.log(e)
       }
@@ -46,6 +46,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "@/assets/styles/styles";
+
 
 .container__section-ui {
   color: var(--white);
@@ -73,15 +75,25 @@ export default {
     align-items: center;
     justify-content: space-between;
     margin: 2rem 0;
-  }
 
-  &-signup-text {
-    color: var(--gray);
+    &-text {
+      color: var(--gray);
 
-    & > span {
-      cursor: pointer;
-      color: var(--green);
+      & > span {
+        cursor: pointer;
+        color: var(--green);
+      }
     }
+
+    &-link {
+      @extend %link;
+      color: var(--green-light);
+
+      &:hover {
+        color: var(--white)
+      }
+    }
+
   }
 
   &-error {

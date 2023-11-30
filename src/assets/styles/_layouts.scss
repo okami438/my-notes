@@ -1,4 +1,4 @@
-@import '../styles/typography.scss';
+@import 'typography';
 
 :root {
   --dark: #0A1F38;
@@ -72,6 +72,13 @@ input::placeholder {
 }
 
 
+%link {
+  @extend %text-small;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
 
 
 textarea {

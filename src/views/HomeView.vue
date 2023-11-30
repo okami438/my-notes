@@ -8,6 +8,7 @@
       <img src="/src/assets/images/MainBackground.svg" alt="SVG" class="main__right-side-exp-image-overlapping">
       <img src="/src/assets/images/MainObjects.svg" alt="SVG" class="main__right-side-objects-image-overlapping">
     </section>
+    <router-view />
   </main>
 </template>
 
@@ -22,7 +23,6 @@ export default {
 <style scoped lang="scss">
 
 .main {
-  box-sizing: border-box;
   display: flex;
   padding: var(--0, 0px) var(--160, 160px);
   justify-content: space-between;

@@ -15,8 +15,7 @@ export default {
     HeaderComponent
   },
   mounted() {
-    ping.ping().then(response => console.info("headers:", response.headers));
-
+    ping.testPing()
   }
 }
 </script>

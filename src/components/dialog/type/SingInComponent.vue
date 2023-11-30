@@ -4,7 +4,7 @@
     <FormRenderComponent :form="form"/>
     <div class="container__section-ui-signup">
       <span class="container__section-ui-signup-text text-small">У вас нет аккаунта?
-        <span class="text-small-bold" @click="$emit('registration')">Зарегистрируйтесь</span>
+        <router-link class="text-small container__section-ui-signup-link" to="/signup">Зарегистрируйтесь</router-link>
       </span>
       <ButtonsComponent label="Войти" @click="fetchAuth"/>
     </div>
@@ -22,7 +22,6 @@ import {DIALOG_SIGN_IN} from "@/constans/dialogSingIn";
 export default {
   name: "SignInComponent",
   components: {ButtonsComponent, FormRenderComponent},
-  emits: ['registration'],
   data() {
     return {
       isError: null,
@@ -40,7 +39,7 @@ export default {
 
       try {
         this.isError = null;
-        await authentication.getAuthenticationUser(requestMapper(this.form));
+        await authentication.postAuthentication(requestMapper(this.form));
       } catch (e) {
         console.log(e)
         this.isError = e;
@@ -53,6 +52,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "@/assets/styles/styles";
 
 .container__section-ui {
   color: var(--white);
@@ -87,6 +87,15 @@ export default {
       & > span {
         cursor: pointer;
         color: var(--green);
+      }
+    }
+
+    &-link {
+      @extend %link;
+      color: var(--green-light);
+
+      &:hover {
+        color: var(--white)
       }
     }
   }
