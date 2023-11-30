@@ -13,6 +13,7 @@
 }
 
 * {
+  font-family: Montserrat;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -26,10 +27,9 @@
 
 body {
   background: var(--dark);
-  font-family: Montserrat;
 }
 
-button, input {
+button, input, textarea {
   border: none;
 
   &:focus-visible {
@@ -37,7 +37,7 @@ button, input {
   }
 }
 
-input::placeholder {
+input::placeholder, textarea::placeholder {
   @extend %text-small;
   overflow: hidden;
   color: var(--gray);
@@ -45,6 +45,7 @@ input::placeholder {
   white-space: nowrap;
   font-size: 18px;
 }
+
 
 %input-shared {
   height: 72px;
@@ -57,18 +58,15 @@ input::placeholder {
 }
 
 
-
 %textarea-shared {
   resize: none;
-  display: flex;
-  height: 280px;
+  height: 220px;
   align-items: flex-start;
-  gap: var(--0, 0px);
-  flex: 1 0 0;
   align-self: stretch;
   border-radius: 36px;
   background: var(--white);
   border: 2px solid var(--white);
+  padding-block: 0;
 }
 
 
@@ -81,19 +79,6 @@ input::placeholder {
 }
 
 
-textarea {
-  @extend %textarea-shared;
-
-  &:hover {
-    @extend %textarea-shared;
-    border: 2px solid var(--green-light, #B1C909);
-  }
-
-  &:active {
-    @extend %textarea-shared;
-    border: 2px solid var(--green-light);
-  }
-}
 
 
 

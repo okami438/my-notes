@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/styles/layouts";
+@import "@/assets/styles/styles";
 
 .input-password-form {
 

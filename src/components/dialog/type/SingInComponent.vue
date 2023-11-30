@@ -18,6 +18,7 @@ import ButtonsComponent from "@/components/ButtonComponent.vue";
 import {authentication} from "@/api";
 import {requestMapper} from "@/utils/requestMapper";
 import {DIALOG_SIGN_IN} from "@/constans/dialogSingIn";
+import {mapActions} from "vuex";
 
 export default {
   name: "SignInComponent",
@@ -35,11 +36,15 @@ export default {
 
   methods: {
 
+    ...mapActions({
+       login: 'authentication/login'
+    }),
+
     async fetchAuth() {
 
       try {
         this.isError = null;
-        await authentication.postAuthentication(requestMapper(this.form));
+        await this.login(requestMapper(this.form));
       } catch (e) {
         console.log(e)
         this.isError = e;

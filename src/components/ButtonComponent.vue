@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "ButtonsComponent",
+  name: "ButtonComponent",
   emits: ['click'],
   props: {
     rounded: {
