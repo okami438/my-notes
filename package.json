@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vite --open",
+    "serve": "vite --open --host",
     "build": "vite build --out-dir dist"
   },
   "dependencies": {
@@ -11,6 +11,7 @@
     "axios": "^1.6.2",
     "core-js": "^3.8.3",
     "qs": "^6.11.2",
+    "vite-plugin-mkcert": "^1.17.1",
     "vue": "^2.6.14",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2"

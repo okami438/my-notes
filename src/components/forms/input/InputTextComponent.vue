@@ -4,9 +4,8 @@
   <div class="input-text-form__container">
     <input
         class="input-text-form__container-input"
-        :type="item.type"
+        type="text"
         :id="item.id"
-        :value="item.value"
         v-model="item.value"
         :placeholder="item.placeholder"
     >
@@ -26,7 +25,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "src/assets/styles/layouts.scss";
+@import "@/assets/styles/layouts";
 
 .input-text-form {
 

@@ -1,15 +1,14 @@
 import axios from "axios";
-import qs from "qs";
-
 
 const httpRequest = axios.create({
-    // withCredentials: true,
-    paramsSerializer: params => qs.stringify(params, {arrayFormat: 'repeat'}),
     baseURL: import.meta.env.VITE_FRONTEND_API_URL_NEW_DISK,
-    timeout: 60 * 1000,
-    transformRequest: [(data) => {
-        return JSON.stringify(data)
-    }],
+    timeout: 10 * 60 * 1000,
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json; charset=utf-8',
+    },
+    transformRequest: [(data) => JSON.stringify(data)],
 });
+
 
 export default {httpRequest}

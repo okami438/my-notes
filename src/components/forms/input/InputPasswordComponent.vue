@@ -4,9 +4,8 @@
     <div class="input-password-form__container">
       <input
           class="input-password-form__container-input"
-          :type="item.type"
+          :type="showPassword ? 'text' : 'password'"
           :id="item.id"
-          :value="item.value"
           v-model="item.value"
           :placeholder="item.placeholder"
       >
@@ -14,6 +13,7 @@
           class="input-password-form__container-image"
            :src="showPassword ? '/src/assets/images/Eye.svg' : '/src/assets/images/EyeBlocked.svg'"
            alt="eye"
+          @click="showPassword = !showPassword"
       />
     </div>
   </div>
@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "src/assets/styles/layouts.scss";
+@import "@/assets/styles/layouts";
 
 .input-password-form {
 
