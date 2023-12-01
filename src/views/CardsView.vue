@@ -1,8 +1,8 @@
 <template>
   <main class="main">
 
-    <section v-for="(item, id) in itemCard" :key="id">
-      <CardComponent :item="item"/>
+    <section v-for="(item, id) in itemCard" :key="id" class="main__cards">
+      <CardComponent :item="item" @refetch="fetchCards"/>
     </section>
 
     <div>
@@ -79,6 +79,8 @@ export default {
     async fetchAddCards() {
       try {
         await notes.postNotes(requestMapper(this.form))
+        await this.fetchCards();
+        this.dialogVisibleFn();
       } catch(e) {
         console.error(e)
       }
@@ -90,41 +92,85 @@ export default {
 
 <style scoped lang="scss">
 
-.main {
-  display: flex;
-  padding: 40px;
-  flex: 1;
-  align-self: stretch;
-  flex-wrap: wrap;
 
-  &__inner {
+  .main {
     display: flex;
-    flex-direction: column;
+    padding: 40px;
+    flex: 1;
+    align-self: stretch;
     flex-wrap: wrap;
-    padding: 0 3rem;
 
-    & > h2 {
-      margin-bottom: 3rem;
-      width: 150px;
-      color: var(--white)
+    &__inner {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      padding: 0 3rem;
+
+      & > h2 {
+        margin-bottom: 3rem;
+        width: 150px;
+        color: var(--white)
+      }
+
+      &-button {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding-bottom: 2rem;
+      }
+
     }
 
-    &-button {
+    &__add-button {
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
-      padding-bottom: 2rem;
+      align-items: flex-end;
+      width: 100%;
     }
-
   }
 
-  &__add-button {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: flex-end;
-    width: 100%;
+  @media screen and (min-width: 360px) {
+    .main {
+      display: flex;
+      padding: 40px;
+      flex: 1;
+      align-self: stretch;
+      flex-wrap: wrap;
+      position: relative;
+
+      &__cards {
+        margin-top: 40px;
+      }
+
+      &__inner {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 0 3rem;
+
+        & > h2 {
+          margin-bottom: 3rem;
+          width: 150px;
+          color: var(--white)
+        }
+
+        &-button {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          padding-bottom: 2rem;
+        }
+
+      }
+
+      &__add-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 999;
+      }
+    }
   }
-}
 
 </style>

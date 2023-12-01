@@ -13,12 +13,13 @@ export default defineConfig({
         cors: true,
         port: 8080,
         https: true,
-        proxy: {
-            "/api": {
-                changeOrigin: true,
-                target: "https://dist.nd.ru",
-            }
-        }
+        //TODO: Если вдруг снова переведут на куки - раскоментировать
+        // proxy: {
+        //     "/api": {
+        //         changeOrigin: true,
+        //         target: "https://dist.nd.ru",
+        //     }
+        // }
     },
     resolve: {
         alias: [

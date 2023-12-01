@@ -1,7 +1,7 @@
 <template>
-  <ButtonComponent rounded @click="$emit('click')">
+  <ButtonComponent with-shadow rounded @click="$emit('click')">
     <template #icon>
-      <img src="@/assets/images/Add.svg" alt="add">
+      <img src="@/assets/images/Add.svg" alt="add" >
     </template>
   </ButtonComponent>
 </template>
@@ -20,5 +20,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 
 </style>

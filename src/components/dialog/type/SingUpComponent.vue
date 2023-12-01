@@ -6,8 +6,9 @@
       <span class="container__section-ui-signup-text text-small">У вас есть аккаунт?
         <router-link class="text-small container__section-ui-signup-link" to="/login">Войдите</router-link>
       </span>
-      <ButtonComponent :style="{width: '13.75rem'}" label="Зарегистрироваться" @click="fetchReg"/>
+      <ButtonComponent :style="{width: '15rem'}" label="Зарегистрироваться" @click="fetchReg"/>
     </div>
+    <span v-if="isSuccess" class="container__section-ui-success">Регистрация прошла успешно</span>
   </section>
 </template>
 
@@ -26,7 +27,8 @@ export default {
   },
   data() {
     return {
-      form: []
+      form: [],
+      isSuccess: false
     }
   },
 
@@ -39,6 +41,8 @@ export default {
     async fetchReg() {
       try {
         await registration.postRegistration(requestMapper(this.form));
+        this.form.forEach(item => item.value = null)
+        this.isSuccess = true;
       } catch(e) {
         console.error(e)
       }
@@ -99,10 +103,10 @@ export default {
 
   }
 
-  &-error {
+  &-success {
     padding: 1rem 1rem 1rem 1.5rem;
-    color: #ff7461;
-    background-color: #323649;
+    color: var(--green-light);
+    background-color: var(--dark-light);
     border-radius: 2rem;
   }
 }

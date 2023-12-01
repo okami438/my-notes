@@ -3,25 +3,22 @@ import {LOGIN, LOGOUT} from "@/store/modules/mutation-types";
 
 const state = {
     isLoggedIn: false,
-    userId: localStorage.getItem('id') || null,
-    userEmail: localStorage.getItem('email') || null,
+    token: localStorage.getItem('token') || null
 };
 
 const mutations = {
     [LOGIN](state, payload) {
-        localStorage.setItem('id', payload.id);
-        localStorage.setItem('email', payload.email);
+        localStorage.setItem('token', payload.accessToken);
     },
 
     [LOGOUT](state) {
-        localStorage.removeItem('id');
-        localStorage.removeItem('email');
+        localStorage.removeItem('token');
     },
 }
 
 const getters = {
     isLoggedIn: state => {
-        return (state.userId !== null || state.userEmail !== null) ? !state.isLoggedIn : state.isLoggedIn
+        return state.token !== null ? !state.isLoggedIn : state.isLoggedIn
     },
 
     userEmail: state => {
@@ -35,6 +32,7 @@ const actions = {
     async login({dispatch, commit}, items) {
         try {
             await authentication.postAuthentication(items).then(({data}) => {
+                console.log(data)
                 commit('LOGIN', data)
                 location.replace('/notes')
             });

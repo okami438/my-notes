@@ -36,6 +36,7 @@ export default {
   pointer-events: none;
   z-index: 3;
 
+
   &:before {
     content: "";
     display: block;
@@ -56,6 +57,11 @@ export default {
     z-index: 4;
     border-radius: var(--40, 40px);
     background: var(--dark-middle);
+
+    @media screen and (max-width: 1366px) {
+      height: 80vh;
+      overflow: auto;
+    }
 
     &-header {
       display: flex;

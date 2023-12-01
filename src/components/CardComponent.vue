@@ -27,6 +27,7 @@ import {notes} from "@/api";
 export default {
   name: "CardComponent",
   components: {ButtonComponent},
+  emits: ['refetch'],
   props: {
     item: Object
   },
@@ -47,6 +48,7 @@ export default {
     async fetchDelete() {
       try {
         await notes.deleteNotes(this.item.id)
+        this.$emit('refetch');
       } catch(e) {
         console.error(e)
       }
@@ -60,6 +62,7 @@ export default {
 
 
 .card {
+  margin: 0 45px;
   display: flex;
   flex-direction: column;
   max-height: 480px;
@@ -77,6 +80,7 @@ export default {
 
 
     & > h4 {
+      word-wrap: break-word;
       color: var(--white);
     }
 
@@ -89,6 +93,7 @@ export default {
     width: 100%;
 
     &-text {
+      word-wrap: break-word;
       color: var(--white)
     }
 

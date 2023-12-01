@@ -7,8 +7,8 @@
       </template>
     </ButtonComponent>
     <div v-else>
-      <span class="text-small">{{ userEmail }}</span>
-      <ButtonComponent rounded :style="{backgroundColor: 'var(--dark-middle)'}" @click="isToggle = !isToggle">
+      <span class="text-small">{{ user.email }}</span>
+      <ButtonComponent class="user-info" rounded :style="{backgroundColor: 'var(--dark-middle)'}" @click="isToggle = !isToggle">
         <template #icon>
           <img src="@/assets/images/User.svg" alt="user">
         </template>
@@ -29,22 +29,18 @@ import MenuComponent from "@/components/MenuComponent.vue";
 export default {
   name: 'HeaderComponent',
   components: {MenuComponent, SignUpView, SignInView, ButtonComponent, DialogComponent},
+  props: {
+    user: Object
+  },
   data() {
     return {
       isToggle: false
     }
   },
 
-
-  mounted() {
-    console.log(this.isLoggedIn)
-  },
-
   computed: {
-
     ...mapGetters('authentication', {
       isLoggedIn: 'isLoggedIn',
-      userEmail: 'userEmail'
     }),
   },
 
@@ -63,6 +59,17 @@ export default {
 <style scoped lang="scss">
 
 header {
+
+  @media screen and (max-width: 360px) {
+    & > div > span {
+      display: none;
+    }
+
+    .user-info {
+      margin-left: 15rem;
+    }
+  }
+
   display: flex;
   padding: var(--40, 40px) var(--160, 10rem);
   justify-content: space-between;
@@ -92,9 +99,11 @@ header {
     width: 17rem;
 
     & > span {
-      color: var(--white)
+      color: var(--white);
     }
   }
+
+
 }
 
 </style>

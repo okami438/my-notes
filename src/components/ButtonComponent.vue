@@ -1,5 +1,5 @@
 <template>
-    <button @click="$emit('click')" :class="{'button-round': rounded, 'button-enter': !rounded}">
+    <button @click="$emit('click')" :class="{'button-round': rounded, 'button-enter': !rounded}" :style="withShadow ? {boxShadow: '0 3px 1px 0 #0A1621'} : ''">
       <img v-if="isCloseButton" src="/src/assets/images/Close.svg" alt="Vector">
       <slot name="icon"/>
       <span class="text-normal" :style="{color: 'var(--white)'}" v-if="label">{{ label }}</span>
@@ -12,6 +12,10 @@ export default {
   emits: ['click'],
   props: {
     rounded: {
+      type: Boolean,
+      required: false
+    },
+    withShadow: {
       type: Boolean,
       required: false
     },

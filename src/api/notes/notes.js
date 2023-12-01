@@ -1,8 +1,8 @@
 import http from '@/api/http/http';
 
-const getNotes = () => http.httpRequest.get('api/notes');
-const postNotes = (data) => http.httpRequest.post('api/notes', data)
-const deleteNotes = (id) => http.httpRequest.delete(`api/notes/${id}`);
+const getNotes = () => http.httpRequest.get('notes');
+const postNotes = (data) => http.httpRequest.post('notes', data)
+const deleteNotes = (id) => http.httpRequest.delete(`notes/${id}`);
 
 export default {
     getNotes,
