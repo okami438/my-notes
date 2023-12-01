@@ -22,7 +22,10 @@ import {mapActions} from "vuex";
 
 export default {
   name: "SignInComponent",
-  components: {ButtonsComponent, FormRenderComponent},
+  components: {
+    ButtonsComponent,
+    FormRenderComponent
+  },
   data() {
     return {
       isError: null,

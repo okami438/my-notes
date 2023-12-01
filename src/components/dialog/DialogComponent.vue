@@ -1,7 +1,7 @@
 <template>
   <div class="dialog-mask">
-    <div class="container">
-      <header class="container__header">
+    <div class="dialog-mask__container">
+      <header class="dialog-mask__container-header">
         <ButtonComponent rounded is-close-button @click="$emit('close')"/>
       </header>
       <slot name="content"></slot>
@@ -45,24 +45,26 @@ export default {
     height: 100%;
     position: absolute;
   }
-}
 
-.container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  pointer-events: auto;
-  width: 780px;
-  min-height: 672px;
-  z-index: 4;
-  border-radius: var(--40, 40px);
-  background: var(--dark-middle);
-
-  &__header {
+  &__container {
+    position: relative;
     display: flex;
-    justify-content: flex-end;
-    padding: 1.25rem;
+    flex-direction: column;
+    pointer-events: auto;
+    width: 780px;
+    min-height: 672px;
+    z-index: 4;
+    border-radius: var(--40, 40px);
+    background: var(--dark-middle);
+
+    &-header {
+      display: flex;
+      justify-content: flex-end;
+      padding: 1.25rem;
+    }
   }
 }
+
+
 
 </style>

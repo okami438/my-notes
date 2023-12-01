@@ -1,13 +1,24 @@
 import { defineConfig } from 'vite';
 import { createVuePlugin } from 'vite-plugin-vue2';
+import mkcert from 'vite-plugin-mkcert'
 import path from 'path';
+
 
 export default defineConfig({
     plugins: [
         createVuePlugin(),
+        mkcert(),
     ],
     server: {
-        port: 8080
+        cors: true,
+        port: 8080,
+        https: true,
+        proxy: {
+            "/api": {
+                changeOrigin: true,
+                target: "https://dist.nd.ru",
+            }
+        }
     },
     resolve: {
         alias: [

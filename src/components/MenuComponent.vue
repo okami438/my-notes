@@ -1,5 +1,6 @@
 <template>
 <div class="menu">
+  <img src="@/assets/images/ArrowTop.svg" alt="arrow">
   <span class="text-small-bold" @click="$emit('logout')">Выйти</span>
 </div>
 </template>
@@ -24,9 +25,15 @@ div {
   padding: 40px;
   position: absolute;
   top: 7rem;
-  right: 11rem;
+  right: 10.5rem;
   z-index: 3;
   box-shadow: 0 6px 14px 3px #0A1621;
+
+  & > img {
+    position: absolute;
+    top: -9px;
+    right: 10px;
+  }
 
   & > span {
     cursor: pointer;

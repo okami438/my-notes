@@ -20,7 +20,10 @@ import {DIALOG_SIGN_UP} from "@/constans/dialogSignUp";
 
 export default {
   name: "SignUpComponent",
-  components: {ButtonComponent, FormRenderComponent},
+  components: {
+    ButtonComponent,
+    FormRenderComponent
+  },
   data() {
     return {
       form: []
@@ -37,7 +40,7 @@ export default {
       try {
         await registration.postRegistration(requestMapper(this.form));
       } catch(e) {
-        console.log(e)
+        console.error(e)
       }
     }
 

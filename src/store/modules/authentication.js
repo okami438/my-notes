@@ -21,7 +21,12 @@ const mutations = {
 
 const getters = {
     isLoggedIn: state => {
-        return state.userId !== null || state.userEmail !== null ? state.isLoggedIn = true : state.isLoggedIn = false
+        return (state.userId !== null || state.userEmail !== null) ? !state.isLoggedIn : state.isLoggedIn
+    },
+
+    userEmail: state => {
+        console.log(state.userEmail)
+        return state.userEmail !== "undefined" ? state.userEmail : 'Новый пользователь'
     }
 }
 

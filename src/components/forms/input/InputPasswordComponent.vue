@@ -6,7 +6,7 @@
           class="input-password-form__container-input"
           :type="showPassword ? 'text' : 'password'"
           :id="item.id"
-          v-model="item.value"
+          v-model.trim="item.value"
           :placeholder="item.placeholder"
       >
       <img

@@ -8,12 +8,14 @@
 
 <script>
 import ButtonComponent from '@/components/ButtonComponent.vue'
+
 export default {
   name: "AddFileComponent",
   components: {
     ButtonComponent
   },
   emits: ['click']
+
 }
 </script>
 

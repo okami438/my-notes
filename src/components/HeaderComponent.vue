@@ -42,12 +42,9 @@ export default {
 
   computed: {
 
-    ...mapState('authentication', {
-      userEmail: 'userEmail'
-    }),
-
     ...mapGetters('authentication', {
       isLoggedIn: 'isLoggedIn',
+      userEmail: 'userEmail'
     }),
   },
 
@@ -70,6 +67,22 @@ header {
   padding: var(--40, 40px) var(--160, 10rem);
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 768px) {
+    padding: 1.5rem 5rem;
+  }
+
+  @media screen and (max-width: 360px) {
+    margin-left: 4rem;
+    padding: 0;
+    width: 100%;
+
+    & > img {
+      margin-right: 2rem;
+      width: 12rem;
+      height: 12rem;
+    }
+  }
 
   & > div {
     display: flex;

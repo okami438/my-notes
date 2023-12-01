@@ -1,15 +1,16 @@
 <template>
 <div class="input-text-form">
-  <label class="input-text-form__label text-small" :for="item.id"> {{ item.label }} </label>
+  <label :for="item.id"> {{ item.label }} </label>
   <div class="input-text-form__container">
     <input
-        class="input-text-form__container-input"
         type="text"
         :id="item.id"
         v-model="item.value"
+        :maxlength="maxLength"
         :placeholder="item.placeholder"
     >
   </div>
+  <span v-if="item.isShowLength" class="text-small">{{ item.value.length }} / {{ maxLength }}</span>
 </div>
 </template>
 
@@ -19,6 +20,11 @@ export default {
   name: 'InputComponent',
   props: {
     item: Object
+  },
+  data() {
+    return {
+      maxLength: 100
+    }
   }
 }
 
@@ -29,7 +35,7 @@ export default {
 
 .input-text-form {
 
-  &__label {
+  & > label {
     display: block;
     margin-bottom: 8px;
     color: var(--gray);
@@ -49,11 +55,19 @@ export default {
       border: 2px solid var(--green-light);
     }
 
-    &-input {
+    & > input {
       @extend %text-normal;
       width: 100%;
       height: auto;
     }
+  }
+
+  & > span {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 1rem;
+    color: var(--gray);
   }
 
 }

@@ -1,14 +1,15 @@
 <template>
   <div class="textarea-text-form">
-    <label class="textarea-text-form__label text-small" :for="item.id"> {{ item.label }} </label>
+    <label class="text-small" :for="item.id"> {{ item.label }} </label>
     <div class="textarea-text-form__container">
       <textarea
-          class="textarea-text-form__container-textarea"
           :id="item.id"
           v-model="item.value"
           :placeholder="item.placeholder"
+          :maxlength="maxLength"
       />
     </div>
+    <span class="text-small">{{ item.value.length }} / {{ maxLength }}</span>
   </div>
 </template>
 
@@ -18,6 +19,11 @@ export default {
   name: 'TextareaComponent',
   props: {
     item: Object
+  },
+  data() {
+    return {
+      maxLength: 500
+    }
   }
 }
 
@@ -26,10 +32,12 @@ export default {
 <style scoped lang="scss">
 @import "@/assets/styles/styles";
 
+.test {
+}
 
 .textarea-text-form {
 
-  &__label {
+  & > label {
     display: block;
     margin-bottom: 8px;
     color: var(--gray);
@@ -49,11 +57,20 @@ export default {
       border: 2px solid var(--green-light);
     }
 
-    &-textarea {
+    & > textarea {
       @extend %text-normal;
       width: 100%;
-      height: auto;
+      height: 100%;
+      resize: none;
     }
+  }
+
+  & > span {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 1rem;
+    color: var(--gray);
   }
 
 }

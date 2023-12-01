@@ -22,42 +22,185 @@ export default {
 
 <style scoped lang="scss">
 
-.main {
-  display: flex;
-  padding: var(--0, 0px) var(--160, 160px);
-  justify-content: space-between;
-  align-items: center;
-  flex: 1;
-  align-self: stretch;
-  flex-wrap: wrap;
-
-  &__left-side {
+@media screen and (max-width: 1920px) {
+  .main {
     display: flex;
-    flex-direction: column;
-    gap: var(--40px, 40px);
-    padding: var(--0, 0px);
-    align-items: flex-start;
-    width: auto;
-    max-width: 33%;
-    flex-shrink: 0;
-  }
+    padding: var(--0, 0px) var(--160, 160px);
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    align-self: stretch;
+    flex-wrap: wrap;
 
-  &__right-side {
-    position: relative;
-
-    &-exp-image-overlapping {
-      width: 40vw;
+    &__left-side {
+      display: flex;
+      flex-direction: column;
+      gap: var(--40px, 40px);
+      padding: var(--0, 0px);
+      align-items: flex-start;
+      width: auto;
+      max-width: 33%;
+      flex-shrink: 0;
     }
 
-    &-objects-image-overlapping {
-      position: absolute;
-      width: 30vw;
-      top: 18%;
-      left: 12%;
+    &__right-side {
+      position: relative;
 
+      &-exp-image-overlapping {
+        width: 40vw;
+      }
+
+      &-objects-image-overlapping {
+        width: 30vw;
+        position: absolute;
+        top: 18%;
+        left: 12%;
+      }
     }
   }
 }
+
+@media screen and (max-width: 1366px) {
+  .main {
+    display: flex;
+    padding: var(--0, 0px) var(--160, 160px);
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    align-self: stretch;
+    flex-wrap: wrap;
+
+    &__left-side {
+      display: flex;
+      flex-direction: column;
+      gap: var(--40px, 40px);
+      padding: var(--0, 0px);
+      align-items: flex-start;
+      width: auto;
+      max-width: 33%;
+      flex-shrink: 0;
+    }
+
+    &__right-side {
+      position: relative;
+
+      &-exp-image-overlapping {
+        width: 40vw;
+      }
+
+      &-objects-image-overlapping {
+        width: 30vw;
+        position: absolute;
+        top: 18%;
+        left: 12%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .main {
+    display: flex;
+    padding: var(--0, 0px) var(--160, 40px);
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    align-self: stretch;
+    flex-wrap: wrap;
+
+    &__left-side {
+      margin-left: 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: var(--40px, 40px);
+      padding: var(--0, 0px);
+      align-items: flex-start;
+      width: auto;
+      max-width: 33%;
+      flex-shrink: 0;
+
+      & > h1 {
+        text-align: center;
+      }
+
+      & > h3 {
+        margin-left: 2rem;
+        text-align: center;
+        width: 720px;
+      }
+    }
+
+    &__right-side {
+      position: relative;
+
+      &-exp-image-overlapping {
+        margin-left: 8rem;
+        width: 55vw;
+      }
+
+      &-objects-image-overlapping {
+        margin-left: 8rem;
+        width: 40vw;
+        position: absolute;
+        top: 18%;
+        left: 12%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .main {
+    display: flex;
+    padding: var(--0, 0px) var(--160, 20px);
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    align-self: stretch;
+    flex-wrap: wrap;
+
+    &__left-side {
+      display: flex;
+      flex-direction: column;
+      gap: var(--40px, 40px);
+      padding: var(--0, 0px);
+      align-items: flex-start;
+      width: auto;
+      max-width: 33%;
+      flex-shrink: 0;
+      margin-left: -1rem;
+
+      & > h1 {
+        width: 450px;
+        text-align: center;
+      }
+
+      & > h3 {
+        text-align: center;
+        width: 720px;
+      }
+    }
+
+    &__right-side {
+      position: relative;
+
+      &-exp-image-overlapping {
+        margin-left: 1rem;
+        width: 110vw;
+      }
+
+      &-objects-image-overlapping {
+        margin-left: 1rem;
+        width: 290px;
+        height: 275px;
+        position: absolute;
+        top: 18%;
+        left: 12%;
+      }
+    }
+  }
+}
+
 
 
 </style>
