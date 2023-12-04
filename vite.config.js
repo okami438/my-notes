@@ -5,11 +5,11 @@ import path from 'path';
 
 
 export default defineConfig({
-    base: '/my-notes/',
     plugins: [
         vue(),
         // mkcert()
     ],
+    base: '/my-notes/',
     server: {
         // cors: true,
         port: 8080,
