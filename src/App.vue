@@ -11,6 +11,7 @@ import http from "@/api/http/http";
 import {ping} from "@/api/ping";
 import {mapActions} from "vuex";
 import {authentication} from "@/api";
+import store from "@/store";
 
 export default {
   components: {
@@ -24,7 +25,9 @@ export default {
   },
 
   mounted() {
-    this.fetchUser()
+    if (store.getters["authentication/isLoggedIn"]) {
+      this.fetchUser()
+    }
     ping.testPing()
   },
 
