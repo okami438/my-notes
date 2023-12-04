@@ -1,12 +1,13 @@
 import { defineConfig } from 'vite';
-import { createVuePlugin } from 'vite-plugin-vue2';
+// import { createVuePlugin } from 'vite-plugin-vue2';
+import vue from '@vitejs/plugin-vue2';
 // import mkcert from 'vite-plugin-mkcert'
 import path from 'path';
 
 
 export default defineConfig({
     plugins: [
-        createVuePlugin(),
+        vue(),
         // mkcert()
     ],
     server: {
@@ -32,9 +33,6 @@ export default defineConfig({
         cssCodeSplit: false,
         rollupOptions: {
             external: ['vue'],
-            globals: {
-                vue: 'vue'
-            }
         }
     },
     css: {
