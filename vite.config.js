@@ -29,7 +29,13 @@ export default defineConfig({
     },
     build: {
         chunkSizeWarningLimit: 600,
-        cssCodeSplit: false
+        cssCodeSplit: false,
+        rollupOptions: {
+            external: ['vue'],
+            globals: {
+                vue: 'vue'
+            }
+        }
     },
     css: {
         postcss: {
