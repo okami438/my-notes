@@ -46,11 +46,9 @@ jobs:
         with:
             source: ./
             destination: ./_site
-#      - name: Upload artifact
-#        uses: actions/upload-pages-artifact@v2
-#        if: always()
-#        with:
-#          path: 'reports'
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        if: always()
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
