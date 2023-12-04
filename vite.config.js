@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import { fileURLToPath, URL } from 'url'
 import vue from '@vitejs/plugin-vue2';
 // import mkcert from 'vite-plugin-mkcert'
 import path from 'path';
@@ -9,7 +10,6 @@ export default defineConfig({
         vue(),
         // mkcert()
     ],
-    base: '/my-notes/',
     server: {
         // cors: true,
         port: 8080,
@@ -23,13 +23,12 @@ export default defineConfig({
         // }
     },
     resolve: {
-        // extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
         alias: [
-            { find: "@", replacement: path.join(__dirname, "./src") },
-            { find: /^src\//, replacement: path.join(__dirname, "src/") },
-            { find: "/root/src", replacement: path.join(__dirname, "src") },
+            { find: '/@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
         ],
+        extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
     },
+    base: '/my-notes/',
     // build: {
     //     chunkSizeWarningLimit: 600,
     //     cssCodeSplit: false,
