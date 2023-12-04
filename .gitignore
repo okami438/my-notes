@@ -1,6 +1,0 @@
-/.vscode/
-/.idea/
-/node_modules/
-.env
-/yarn.lock
-/yarn-error.log
