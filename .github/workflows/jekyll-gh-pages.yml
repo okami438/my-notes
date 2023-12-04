@@ -7,12 +7,12 @@ on:
     branches: [ "master" ]
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -40,15 +40,19 @@ jobs:
         if: always()
       - name: Setup Pages
         uses: actions/configure-pages@v2
-#        if: always()
-#      - name: Upload artifact
-#        uses: actions/upload-pages-artifact@v2
-#        if: always()
-#        with:
-#          path: 'reports'
+        if: always()
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+            source: ./
+            destination: ./_site
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        if: always()
+        with:
+          path: 'reports'
       - name: Deploy to GitHub Pages
         id: deployment
-        if: always()
         uses: actions/deploy-pages@v2
 
   deploy:
