@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vite --open --host",
     "build": "vite build --out-dir dist",
-    "preview": "vite preview --port 8080"
+    "preview": "vite preview --port 8080",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "autoprefixer": "^10.4.16",
@@ -19,6 +21,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue2": "^1.1.2",
+    "gh-pages": "^6.1.0",
     "sass": "^1.32.7",
     "vite": "^2.2.1",
     "vue-template-compiler": "^2.6.14"
