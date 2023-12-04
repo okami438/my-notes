@@ -25,7 +25,7 @@ export default defineConfig({
     resolve: {
         // extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
         alias: [
-            { find: "@", replacement: path.join(__dirname, "src") },
+            { find: "@", replacement: path.join(__dirname, "./src") },
             { find: /^src\//, replacement: path.join(__dirname, "src/") },
             { find: "/root/src", replacement: path.join(__dirname, "src") },
         ],
