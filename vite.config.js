@@ -1,12 +1,14 @@
 import { defineConfig } from 'vite';
 import { createVuePlugin } from 'vite-plugin-vue2';
 import mkcert from 'vite-plugin-mkcert'
+import vue from '@vitejs/plugin-vue2';
 import path from 'path';
 
 
 export default defineConfig({
     plugins: [
-        createVuePlugin(),
+        // createVuePlugin(),
+        vue(),
         mkcert()
     ],
     server: {
