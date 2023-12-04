@@ -38,6 +38,8 @@ const router = new VueRouter({
   routes
 })
 
+console.log(import.meta.env.BASE_URL)
+
 router.beforeEach((to, from, next) => {
   const publicPages = ['/', '/login', '/signup'];
   const authRequired = !publicPages.includes(to.path);

@@ -1,5 +1,6 @@
 import {authentication} from "@/api";
 import {LOGIN, LOGOUT} from "@/store/modules/mutation-types";
+import router from "@/router";
 
 const state = {
     isLoggedIn: false,
@@ -34,7 +35,8 @@ const actions = {
             await authentication.postAuthentication(items).then(({data}) => {
                 console.log(data)
                 commit('LOGIN', data)
-                location.replace('/notes')
+                // location.replace('/my-notes/notes')
+                router.push({ name: 'notes' });
             });
         } catch (e) {
             console.log(e)
@@ -45,7 +47,8 @@ const actions = {
         try {
             await authentication.deleteAuthentication().then(() => {
                 commit('LOGOUT')
-                location.replace('/')
+                // location.replace('/my-notes');
+                router.push({ name: 'home' });
             })
         } catch (e) {
             console.log(e)

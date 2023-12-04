@@ -11,7 +11,7 @@
       >
       <img
           class="input-password-form__container-image"
-           :src="showPassword ? '@/assets/images/Eye.svg' : '@/assets/images/EyeBlocked.svg'"
+           :src="showPassword ? Eye : EyeBlocked"
            alt="eye"
           @click="showPassword = !showPassword"
       />
@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import Eye from "@/assets/images/Eye.svg";
+import EyeBlocked from "@/assets/images/EyeBlocked.svg";
 export default {
   name: "InputPasswordComponent",
   props: {
@@ -27,7 +29,9 @@ export default {
   },
   data() {
     return {
-      showPassword: false
+      showPassword: false,
+      Eye: Eye,
+      EyeBlocked: EyeBlocked,
     }
   },
 }
