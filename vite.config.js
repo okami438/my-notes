@@ -33,9 +33,9 @@ export default defineConfig({
     build: {
         chunkSizeWarningLimit: 600,
         cssCodeSplit: false,
-        rollupOptions: {
-            external: ['vue'],
-        }
+        // rollupOptions: {
+        //     external: ['vue'],
+        // }
     },
     css: {
         postcss: {
