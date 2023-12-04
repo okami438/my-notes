@@ -1,9 +1,9 @@
 <template>
   <header>
-    <img src="/src/assets/images/MyNotes.svg" alt="SVG">
+    <img src="@/assets/images/MyNotes.svg" alt="SVG">
     <ButtonComponent @click="toLogin" label="Вход" v-if="!isLoggedIn">
       <template #icon>
-        <img src="/src/assets/images/Vector.svg" alt="SVG">
+        <img src="@/assets/images/Vector.svg" alt="SVG">
       </template>
     </ButtonComponent>
     <div v-else>

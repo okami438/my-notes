@@ -11,7 +11,7 @@
       >
       <img
           class="input-password-form__container-image"
-           :src="showPassword ? '/src/assets/images/Eye.svg' : '/src/assets/images/EyeBlocked.svg'"
+           :src="showPassword ? '@/assets/images/Eye.svg' : '@/assets/images/EyeBlocked.svg'"
            alt="eye"
           @click="showPassword = !showPassword"
       />

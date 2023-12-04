@@ -5,8 +5,8 @@
       <h3 :style="{color: 'var(--gray)', maxWidth: '394px'}">Не забывай о важном, храни его в облаке.</h3>
     </article>
     <section class="main__right-side">
-      <img src="/src/assets/images/MainBackground.svg" alt="SVG" class="main__right-side-exp-image-overlapping">
-      <img src="/src/assets/images/MainObjects.svg" alt="SVG" class="main__right-side-objects-image-overlapping">
+      <img src="@/assets/images/MainBackground.svg" alt="SVG" class="main__right-side-exp-image-overlapping">
+      <img src="@/assets/images/MainObjects.svg" alt="SVG" class="main__right-side-objects-image-overlapping">
     </section>
     <router-view />
   </main>

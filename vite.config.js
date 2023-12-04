@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite';
-// import { createVuePlugin } from 'vite-plugin-vue2';
 import vue from '@vitejs/plugin-vue2';
 // import mkcert from 'vite-plugin-mkcert'
 import path from 'path';
@@ -25,10 +24,11 @@ export default defineConfig({
     },
     resolve: {
         extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
-        alias: {
-            "@": path.resolve(__dirname, "src"),
-        },
-        dedupe: ['vue']
+        alias: [
+            { find: "@", replacement: path.join(__dirname, "src") },
+            { find: /^src\//, replacement: path.join(__dirname, "src/") },
+            { find: "/root/src", replacement: path.join(__dirname, "src") },
+        ],
     },
     build: {
         chunkSizeWarningLimit: 600,
