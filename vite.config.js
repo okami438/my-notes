@@ -6,6 +6,7 @@ import path from 'path';
 
 
 export default defineConfig({
+    base: '/',
     plugins: [
         vue(),
         // mkcert()
@@ -27,6 +28,7 @@ export default defineConfig({
         alias: {
             "@": path.resolve(__dirname, "src"),
         },
+        dedupe: ['vue']
     },
     build: {
         chunkSizeWarningLimit: 600,
