@@ -11,7 +11,7 @@ export default defineConfig({
         // mkcert()
     ],
     server: {
-        cors: true,
+        // cors: true,
         port: 8080,
         // https: true,
         //TODO: Если вдруг снова переведут на куки - раскоментировать
@@ -23,25 +23,25 @@ export default defineConfig({
         // }
     },
     resolve: {
-        extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
+        // extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
         alias: [
             { find: "@", replacement: path.join(__dirname, "src") },
             { find: /^src\//, replacement: path.join(__dirname, "src/") },
             { find: "/root/src", replacement: path.join(__dirname, "src") },
         ],
     },
-    build: {
-        chunkSizeWarningLimit: 600,
-        cssCodeSplit: false,
-        // rollupOptions: {
-        //     external: ['vue'],
-        // }
-    },
-    css: {
-        postcss: {
-            plugins: [
-                require('autoprefixer')
-            ]
-        }
-    }
+    // build: {
+    //     chunkSizeWarningLimit: 600,
+    //     cssCodeSplit: false,
+    //     rollupOptions: {
+    //         external: ['vue'],
+    //     }
+    // },
+    // css: {
+    //     postcss: {
+    //         plugins: [
+    //             require('autoprefixer')
+    //         ]
+    //     }
+    // }
 });
